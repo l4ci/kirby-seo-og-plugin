@@ -1,0 +1,36 @@
+# /plugins/seo/blueprints/fields/metadata.yml
+type: group
+fields:
+  metasettings:
+    label: Meta Daten
+    type: headline
+    help: SEO Meta Titel und Meta Beschreibungen.
+  metatitle:
+    label: Meta Titel
+    type:  text
+    width: 1/2
+    help: Überschreibt den automatisch generierten Seitentitel.
+    validate:
+      maxLength: 70
+  metaindex:
+    label: Meta robots index
+    type: toggle
+    text: yes/no
+    default: yes
+    width: 1/4
+    help: Soll diese Seite von Crawlern (z.B. Google) indexiert werden?
+  metafollow:
+    label: Meta robots follow
+    type: toggle
+    text: yes/no
+    default: yes
+    width: 1/4
+    help: Sollen Links auf dieser Seite von Crawlern (z.B. Google) gefolgt werden?
+  metadescription:
+    label: Meta Beschreibung
+    type:  textarea
+    buttons: false
+    help: Überschreibt den automatisch generierten Seitenauszug.
+    validate:
+      maxLength: 160
+

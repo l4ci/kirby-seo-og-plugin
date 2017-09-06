@@ -1,0 +1,33 @@
+# IDE and editor specific files
+nbproject
+.idea
+.tmproj
+*.esproj
+*.sublime-project
+*.sublime-workspace
+
+# Always ignore extension
+*.diff
+*.err
+*.log
+*.orig
+*.rej
+*.swo
+*.mo
+*.swp
+*.vi
+*.zip
+*.lnk
+
+# OS generated files
+.DS_Store
+.DS_Store?
+.cache
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+.fseventsd
+ehthumbs.db
+Thumbs.db
+Desktop.ini

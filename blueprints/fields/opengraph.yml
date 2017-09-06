@@ -1,0 +1,24 @@
+# /plugins/seo/blueprints/fields/opengraph.yml
+type: group
+fields:
+  ogsettings:
+    label: Open Graph Daten
+    type: headline
+    help: Titel, Beschreibungen und Bild für u.A. Facebook, Linkedin und weitere OpenGraph-fähige Seiten.
+  ogtitle:
+    label: Open Graph - Title
+    type:  text
+    width: 1/2
+    help: Wenn gesetzt, überschreibt es den Meta-Titel.
+  ogimage:
+    label: Open Graph - Image
+    type: image
+    width: 1/2
+    help: Optimal sind Bilder in der Abmessung 1200 x 630 Pixel. Die minimale Bildgröße beträgt 200 x 200 Pixel.
+  ogdescription:
+    label: Open Graph - Beschreibung
+    type:  textarea
+    buttons: false
+    help: Wenn gesetzt, überschreibt es die Meta-Beschreibung.
+    validate:
+      maxLength: 160
