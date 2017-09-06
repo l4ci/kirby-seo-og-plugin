@@ -74,17 +74,17 @@ snippet('seo.opengraph');
 
 Once the snippets and blueprints are added. You can edit meta- and open graph data easily via the kirby panel. The following fields can be edited:
 
-** Meta fields:**
+**Meta fields:**
 
 - Meta title
 - Meta description
 - Meta robots index/noindex
 - Meta robots follow/nofollow
 
-** Open Graph fields:**
+**Open Graph fields:**
 - Open Graph title
 - Open Graph description
-- Open Graph Image
+- Open Graph image
 
 
 ## Options
