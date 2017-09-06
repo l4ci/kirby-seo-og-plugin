@@ -1,6 +1,6 @@
 <?php
     // Config
-    $debug = c::get('seo.debug', false);
+    $debug    = c::get('seo.debug', false);
     $disabled = c::get('seo.meta.disable', false);
 
     if ($disabled) return;

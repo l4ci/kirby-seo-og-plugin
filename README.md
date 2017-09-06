@@ -1,10 +1,10 @@
 # Kirby SEO & Open Graph Plugin Readme
 
-![Version](https://img.shields.io/badge/version-1.0.0-green.svg) ![License](https://img.shields.io/badge/license-MIT-green.svg) ![Kirby Version](https://img.shields.io/badge/Kirby-2.5.5%2B-red.svg)
+![Version](https://img.shields.io/badge/version-1.0.1-green.svg) ![License](https://img.shields.io/badge/license-MIT-green.svg) ![Kirby Version](https://img.shields.io/badge/Kirby-2.5.5%2B-red.svg)
 
-*Version 1.0.0*
+*Version 1.0.1*
 
-Plugin for Kirby CMS to add seo relevant meta- and [open graph](http://ogp.me/) data to templates and blueprints, for easy editing these information via the kirby panel.
+Plugin for Kirby CMS to add seo relevant meta- and [open graph](http://ogp.me/) data to templates and blueprints, for easy editing these information via the kirby panel. Also adds the option for a robots.txt which can be altered through the config.
 
 ## Installation
 
@@ -70,9 +70,18 @@ snippet('seo.meta');
 snippet('seo.opengraph');
 ```
 
+
+### 3. Config
+
+Enable the plugin by adding the following to your `site/config/config.php`:
+
+```php
+c::set('seo', true);
+```
+
 ## Usage
 
-Once the snippets and blueprints are added. You can edit meta- and open graph data easily via the kirby panel. The following fields can be edited:
+Once the snippets and blueprints are added, and the plugin is enabled in your `config.php`. You can edit the meta- and open graph data easily via the kirby panel for your enabled pages. The following fields can be edited:
 
 **Meta fields:**
 
@@ -92,28 +101,50 @@ Once the snippets and blueprints are added. You can edit meta- and open graph da
 The following options can be set in your `/site/config/config.php` file:
 
 ```php
+// En/disable the whole plugin
+//  - Disabled by default
+c::set('seo', true);
+
 // Show/hide HTML comments around the added snippets
+//  - Disabled by default
 c::set('seo.debug', false);
 
-// En/disable output of the metadata snippet
+// Only en/disable output of the meta data snippet
+//  - Enabled by default
 c::set('seo.meta.disable', false);
 
-// En/disable output of the opengraph snippet
+// Only en/disable output of the open graph snippet
+//  - Enabled by default
 c::set('seo.opengraph.disable', false);
 
 // You can define the og:type for specific templates here
-// where you dont want og:type=website to show
 // e.g. og:type=article for blog/newsposts
-// you can always just leave it out as well.
+// leave it out and the default is used
+//  - og:type=website by default
 c::set('seo.ogtypes', [
     'newspost' => 'article',
     'blogpost' => 'article',
     'userpage' => 'profile'
 ]);
+
+// En/disable robots.txt
+// - Enabled by default
+c::set('seo.robots.txt', true);
+
+// You can even set the content yourself
+c::set('seo.robots.txt', '
+User-agent: *
+Disallow: /
+Sitemap: http://url.tld/sitemap.xml
+');
 ```
 
 
 ## Changelog
+
+**1.0.1**
+
+- added robots.txt route
 
 **1.0.0**
 
@@ -122,13 +153,14 @@ c::set('seo.ogtypes', [
 ## Todo
 
 - [ ] add XML Sitemap
-- [ ] add robots.txt route
+- [ ] add support for JSON-LD 
+- [x] add robots.txt route
 - [x] Basic Meta Data
 - [x] Open Graph Data
 
 ## Requirements
 
-- [**Kirby**](https://getkirby.com/) 2.5.5
+- [**Kirby**](https://getkirby.com/) 2.5.5+
 
 ## Disclaimer
 

@@ -1,8 +1,8 @@
 {
     "name": "kirby-seo-og-plugin",
-    "description": "Plugin for Kirby CMS to add seo relevant meta- and [open graph](http://ogp.me/) data to templates and blueprints, for easy editing these information via the kirby panel.",
+    "description": "Kirby SEO and Open Graph Plugin",
     "author": "Volker Otto <hello@volkerotto.net>",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "type": "kirby-plugin",
     "license": "MIT"
 }
