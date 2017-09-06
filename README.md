@@ -22,7 +22,7 @@ $ kirby plugin:install l4ci/kirby-seo-og-plugin
 ### 2. Clone or download
 
 1. [Clone](https://github.com/l4ci/kirby-seo-og-plugin.git) or [download](https://github.com/l4ci/kirby-seo-og-plugin/archive/master.zip)  this repository.
-2. Unzip the archive if needed and rename the folder to `plugin-name`.
+2. Unzip the archive if needed and rename the folder to `seo`.
 
 **Make sure that the plugin folder structure looks like this:**
 
@@ -61,7 +61,7 @@ Add  `prefix="og: http://ogp.me/ns#"` to your `<html>` element. So it will look 
 <html lang="en" prefix="og: http://ogp.me/ns#"
 ```
 
-### 2. Snippet
+### 3. Snippet
 
 Add the following code to your `header.php` snippet (or the fitting one) within your `<head>`.
 
@@ -71,7 +71,7 @@ snippet('seo.opengraph');
 ```
 
 
-### 3. Config
+### 4. Config
 
 Enable the plugin by adding the following to your `site/config/config.php`:
 
