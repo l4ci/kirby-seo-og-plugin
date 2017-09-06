@@ -122,6 +122,7 @@ c::set('seo.ogtypes', [
 ## Todo
 
 - [ ] add XML Sitemap
+- [ ] add robots.txt route
 - [x] Basic Meta Data
 - [x] Open Graph Data
 
