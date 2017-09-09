@@ -26,18 +26,26 @@
 ?>
 <?php e($debug, '<!-- SEO: Open Graph -->'); ?>
 
-    <meta property="og:locale" content="<?php echo site()->language() ? site()->language()->code() : 'en' ?>">
-    <meta property="og:site_name" content="<?php echo site()->title() ?>">
+    <meta property="og:locale" content="<?php echo site()->language() ? site()->language()->code() : 'en' ?>" />
+    <meta property="og:site_name" content="<?php echo site()->title() ?>" />
     <meta property="og:type" content="<?php echo $og_type ?>" />
-    <meta property="og:url" content="<?php echo $page->url() ?>">
-    <meta property="og:title" content="<?php echo $og_title ?>">
+    <meta property="og:url" content="<?php echo $page->url() ?>" />
+    <meta property="og:title" content="<?php echo $og_title ?>" />
 
-<?php if ($og_description): ?>
-    <meta property="og:description" content="<?php echo $og_description ?>">
-<?php endif; ?>
+    <?php if ($og_description): ?>
+        <meta property="og:description" content="<?php echo $og_description ?>" />
+    <?php endif; ?>
 
-<?php if ($og_img): ?>
-    <meta property="og:image" content="<?php echo $og_img->url() ?>">
-<?php endif; ?>
+    <?php if ($og_img): ?>
+        <meta property="og:image" content="<?php echo $og_img->url() ?>" />
+    <?php endif; ?>
+
+    <meta name="twitter:card" content="website" />
+    <meta name="twitter:site" content="<?php echo site()->title() ?>" />
+    <meta name="twitter:title" content="<?php echo $og_title ?>" />
+    <meta name="twitter:description" content="<?php echo $og_description ?>" />
+    <?php if ($og_img): ?>
+        <meta name="twitter:image" content="<?php echo $og_img->url() ?>" />
+    <?php endif; ?>
 
 <?php e($debug, '<!-- /SEO: Open Graph -->'); ?>
