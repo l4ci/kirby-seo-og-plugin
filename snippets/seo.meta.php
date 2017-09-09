@@ -17,7 +17,7 @@
 <?php e($debug, '<!-- SEO: Meta -->'); ?>
 
     <link rel="canonical" href="<?php echo $page->url() ?>">
-    <title><?php echo $title ?></title>
+    <title itemprop="name"><?php echo $title ?></title>
 
 <?php if ( $description ): ?>
     <meta name="description" content="<?php echo $description; ?>">
