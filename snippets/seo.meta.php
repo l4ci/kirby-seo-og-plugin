@@ -10,8 +10,19 @@
     $description = ( $page->metadescription()->isNotEmpty() ? $page->metadescription()->html() : $page->text()->excerpt(157) );
 
     // Robots Index,Noindex Follow,Nofollow
-    $index = ( $page->metaindex()->isNotEmpty() ? ($page->metaindex()->isFalse() ? 'noindex': 'index') : 'index' );
-    $follow = ( $page->metafollow()->isNotEmpty() ? ($page->metafollow()->isFalse() ? 'nofollow' : 'follow') : 'follow' );
+    $index = 'index';
+    if ($page->metaindex()->isNotEmpty()){
+        $index = ($page->metaindex()->isFalse() ? 'noindex': 'index');
+    }else if ($site->metaindex()->isNotEmpty()){
+        $index = ($site->metaindex()->isFalse() ? 'noindex': 'index');
+    }
+
+    $follow = 'follow';
+    if ($page->metafollow()->isNotEmpty()){
+        $follow = ($page->metafollow()->isFalse() ? 'nofollow': 'follow');
+    }else if ($site->metafollow()->isNotEmpty()){
+        $follow = ($site->metafollow()->isFalse() ? 'nofollow': 'follow');
+    }
 ?>
 
 <?php e($debug, '<!-- SEO: Meta -->'); ?>
@@ -19,10 +30,10 @@
     <link rel="canonical" href="<?php echo $page->url() ?>">
     <title itemprop="name"><?php echo $title ?></title>
 
-<?php if ( $description ): ?>
-    <meta name="description" content="<?php echo $description; ?>">
-<?php endif; ?>
+    <?php if ( $description ): ?>
+        <meta name="description" content="<?php echo $description; ?>">
+    <?php endif; ?>
 
-<meta name="robots" content="<?php echo $index?>,<?php echo $follow?>" />
+    <meta name="robots" content="<?php echo $index?>,<?php echo $follow?>" />
 
 <?php e($debug, '<!-- /SEO: Meta -->'); ?>
