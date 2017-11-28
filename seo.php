@@ -13,8 +13,7 @@ $kirby->set('snippet', 'seo.opengraph', __DIR__ . '/snippets/seo.opengraph.php')
 // Robots.txt
 $robotsDefault = '
 User-agent: *
-Disallow: /
-';
+Disallow:';
 
 $robots = c::get('seo.robots.txt', true);
 
