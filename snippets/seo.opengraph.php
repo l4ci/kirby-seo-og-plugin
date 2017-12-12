@@ -6,9 +6,12 @@
 
     if ($disabled) return;
 
+    $title = ( $page->metatitle()->isNotEmpty() ? $page->metatitle()->html() : $page->title()->html() . " | " . $site->title()->html() );
+    $description = ( $page->metadescription()->isNotEmpty() ? $page->metadescription()->html() : $page->text()->excerpt(157) );
+
     // Title and description
-    $og_title = ( $page->ogtitle()->isNotEmpty() ? $page->ogtitle()->html() : $page->title()->html() );
-    $og_description = ( $page->ogdescription()->isNotEmpty() ? $page->ogdescription()->html() : false );
+    $og_title = ( $page->ogtitle()->isNotEmpty() ? $page->ogtitle()->html() : $title );
+    $og_description = ( $page->ogdescription()->isNotEmpty() ? $page->ogdescription()->html() : $description );
 
     // Type
     $og_type = 'website';
