@@ -18,7 +18,7 @@ Disallow:';
 $robotsEnabled = c::get('seo.robots.txt', true);
 
 if ( $robotsEnabled !== false){
-    
+
     if ($robotsEnabled === true) c::set('seo.robots.txt', $robotsDefault);
 
     $kirby->set('route', array(
@@ -31,21 +31,28 @@ if ( $robotsEnabled !== false){
     $kirby->set('route', array(
         'pattern' => 'sitemap',
         'action'  => function() {
-            $ignore = c::get('seo.xmlsitemap.ignore', array('sitemap', 'error'));
-            header('Content-type: text/xml; charset="utf-8"');
-            echo '<?xml version="1.0" encoding="utf-8"?>';
-            ?>
-            <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-                <?php foreach($pages->index() as $p): ?>
-                <?php if(in_array($p->uri(), $ignore)) continue ?>
-                    <url>
-                        <loc><?php echo html($p->url()) ?></loc>
-                        <lastmod><?php echo $p->modified('c') ?></lastmod>
-                        <priority><?php echo ($p->isHomePage()) ? 1 : number_format(0.5/$p->depth(), 1) ?></priority>
-                    </url>
-                <?php endforeach ?>
-            </urlset>
-            <?php
+            $pages = site()->index()->visible();
+
+            // Filter out Modules
+            $pages = $pages->filterBy('isModule', false);
+
+            $ignore = c::get('seo.xmlsitemap.ignore', ['sitemap', 'error']);
+            $ignoreTemplates = c::get('seo.xmlsitemap.ignoretemplates', ['cronjob', 'error', 'redirect']);
+
+
+            $r = '';
+            $r .= '<?xml version="1.0" encoding="utf-8"?>';
+            $r .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
+
+            foreach($pages as $p){
+                if ( in_array($p->uri(), $ignore) ) continue;
+                if ( in_array($p->uri(), $ignoreTemplates) ) continue;
+
+                $r .= '<url><loc>'.$p->url().'</loc><lastmod>'.$p->modified('c').'</lastmod><priority>'.( $p->isHomePage() ? 1 : number_format(0.5/$p->depth(), 1)).'</priority></url>';
+            }
+            $r .= '</urlset>';
+
+            return new Response(trim($r), 'text/plain', 200);
         }
     ));
 }
