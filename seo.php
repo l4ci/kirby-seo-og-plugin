@@ -47,6 +47,7 @@ if ( $robotsEnabled !== false){
             foreach($pages as $p){
                 if ( in_array($p->uri(), $ignore) ) continue;
                 if ( in_array($p->uri(), $ignoreTemplates) ) continue;
+                if ( $p->metaindex()->isFalse() ) continue;
 
                 $r .= '<url><loc>'.$p->url().'</loc><lastmod>'.$p->modified('c').'</lastmod><priority>'.( $p->isHomePage() ? 1 : number_format(0.5/$p->depth(), 1)).'</priority></url>';
             }
