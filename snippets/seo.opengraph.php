@@ -7,7 +7,7 @@
     if ($disabled) return;
 
     $title = ( $page->metatitle()->isNotEmpty() ? $page->metatitle()->html() : $page->title()->html() . " | " . $site->title()->html() );
-    $description = ( $page->metadescription()->isNotEmpty() ? $page->metadescription()->html() : $page->text()->excerpt(157) );
+    $description = ( $page->metadescription()->isNotEmpty() ? $page->metadescription()->html() : str::excerpt($page->text(), 157, true) );
 
     // Title and description
     $og_title = ( $page->ogtitle()->isNotEmpty() ? $page->ogtitle()->html() : $title );

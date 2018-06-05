@@ -7,7 +7,7 @@
 
     // Title and description
     $title = ( $page->metatitle()->isNotEmpty() ? $page->metatitle()->html() : $page->title()->html() . " | " . $site->title()->html() );
-    $description = ( $page->metadescription()->isNotEmpty() ? $page->metadescription()->html() : $page->text()->excerpt(157) );
+    $description = ( $page->metadescription()->isNotEmpty() ? $page->metadescription()->html() : str::excerpt($page->text(), 157, true) );
 
     // Robots Index,Noindex Follow,Nofollow
     $index = 'index';
